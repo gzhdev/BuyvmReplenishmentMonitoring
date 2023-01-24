@@ -4,6 +4,7 @@ from logging import handlers
 import time
 import os
 import asyncio
+from genTargets import genTargets
 
 # 日志
 if not os.path.exists("./logs"):
@@ -31,30 +32,9 @@ URL = 'https://my.frantech.ca/cart.php'
 
 # 全局变量
 # 监控的项目，由{pid:{name:status}}构成
-targets = {
-    1423: {'name': 'LU RYZEN KVM 1GB', 'status': 0},
-    1424: {'name': 'LU RYZEN KVM 2GB', 'status': 0},
-    1425: {'name': 'LU RYZEN KVM 4GB', 'status': 0},
-    1426: {'name': 'LU RYZEN KVM 8GB', 'status': 0},
-    1427: {'name': 'LU RYZEN KVM 12GB', 'status': 0},
-    1428: {'name': 'LU RYZEN KVM 16GB', 'status': 0},
-    1429: {'name': 'LU RYZEN KVM 20GB', 'status': 0},
-    1430: {'name': 'LU RYZEN KVM 24GB', 'status': 0},
-    1431: {'name': 'LU RYZEN KVM 28GB', 'status': 0},
-    1432: {'name': 'LU RYZEN KVM 32GB', 'status': 0},
-    1486: {'name': 'LU Block Storage Slab - 256GB', 'status': 0},
-    1487: {'name': 'LU Block Storage Slab - 512GB', 'status': 0},
-    1488: {'name': 'LU Block Storage Slab - 1TB', 'status': 0},
-    1489: {'name': 'LU Block Storage Slab - 2TB', 'status': 0},
-    1490: {'name': 'LU Block Storage Slab - 3TB', 'status': 0},
-    1491: {'name': 'LU Block Storage Slab - 4TB', 'status': 0},
-    1492: {'name': 'LU Block Storage Slab - 5TB', 'status': 0},
-    1493: {'name': 'LU Block Storage Slab - 6TB', 'status': 0},
-    1494: {'name': 'LU Block Storage Slab - 7TB', 'status': 0},
-    1495: {'name': 'LU Block Storage Slab - 8TB', 'status': 0},
-    1496: {'name': 'LU Block Storage Slab - 9TB', 'status': 0},
-    1497: {'name': 'LU Block Storage Slab - 10TB', 'status': 0}
-}
+gids = [39, 46]
+targets = genTargets(gids)
+logger.info(f"Gen targets successfully. The targets number is {len(targets)}")
 
 
 async def sendMsg(msg):
