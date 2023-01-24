@@ -82,4 +82,5 @@ def main():
 if __name__ == '__main__':
     while True:
         main()
+        logger.info("Sleep 300s.")
         time.sleep(300)
