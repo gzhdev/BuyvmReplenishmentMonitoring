@@ -25,7 +25,7 @@ handler.setFormatter(formatter)
 th.setFormatter(formatter)
 logger.addHandler(handler)
 logger.addHandler(th)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 
 # 常量
 URL = 'https://my.frantech.ca/cart.php'
