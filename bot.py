@@ -27,6 +27,9 @@ logger.addHandler(th)
 logger.setLevel(logging.DEBUG)
 
 # 常量
+URL = 'https://my.frantech.ca/cart.php'
+
+# 全局变量
 # 监控的项目，由{pid:{name:status}}构成
 targets = {
     1423: {'name': 'LU RYZEN KVM 1GB', 'status': 0},
@@ -52,17 +55,16 @@ targets = {
     1496: {'name': 'LU Block Storage Slab - 9TB', 'status': 0},
     1497: {'name': 'LU Block Storage Slab - 10TB', 'status': 0}
 }
-URL = 'https://my.frantech.ca/cart.php'
 
 
 async def sendMsg(msg):
-    msg_url = r''  # Wecomchan通知推送URL，可以参考https://github.com/easychen/wecomchan搭建
+    MSG_URL = r''  # Wecomchan通知推送URL，可以参考https://github.com/easychen/wecomchan搭建
     params = {
         'sendkey': '',  # Wecomchan的sendkey
         'text': msg
     }
     async with httpx.AsyncClient() as client:
-        r = await client.get(msg_url, params=params)
+        r = await client.get(MSG_URL, params=params)
         logger.info(f"sendMsg, status_code={r.status_code}")
     return r.status_code
 
@@ -100,4 +102,4 @@ def main():
 if __name__ == '__main__':
     while True:
         main()
-        time.sleep(60)
+        time.sleep(300)
