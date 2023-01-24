@@ -34,4 +34,5 @@ def genTargets(gidList):
 
 
 if __name__ == '__main__':
-    pprint(genTargets([39, 46]))
+    gids = [39, 46]
+    pprint(genTargets(gids))
