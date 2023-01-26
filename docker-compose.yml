@@ -4,4 +4,4 @@ services:
   buyvm-dev:
     build: .
     volumes:
-      - /root/app/BuyvmReplenishmentMonitoring/dev-logs:/usr/src/app/logs
+      - <log dir>:/usr/src/app/logs
