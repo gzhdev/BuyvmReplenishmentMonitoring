@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  buyvm-dev:
+    build: .
+    volumes:
+      - /root/app/BuyvmReplenishmentMonitoring/dev-logs:/usr/src/app/logs
