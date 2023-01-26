@@ -68,6 +68,8 @@ async def getStatusCode(pid):
         logger.info(f"{pid} is replenishment, send message to user.")
     elif r.status_code == 200 and targets[pid]['status'] == 1:
         logger.info(f"{pid} is Out of Stock")
+        msg2 = rf"{targets[pid]['name']} 已售罄"
+        await sendMsg(msg2)
         targets[pid]['status'] = 0
     return 0
 
